@@ -1,3 +1,7 @@
+# File->Settings->Editor->Code style->Python  -  настройка пробелов pycharm
+# File->Settings->Editor->General->Appearance->Show whitespaces  - отоброжение пробелов pycharm
+
+
 # name = 'Matt'
 # print(name)
 # print(name == 'Matt')
