@@ -4,27 +4,27 @@
 # print(name != 'John')
 # print(6 > 7)
 
-# import functools
+import functools
 
 
-# @functools.total_ordering
-# class Abs(object):
-#     def __init__(self, num):
-#         self.num = abs(num)
-#
-#     def __eq__(self, other):
-#         return self.num == abs(other)
-#
-#     def __lt__(self, other):
-#         return self.num < abs(other)
-#
-# five = -5
-# four = -4
-# print(five > four)
-# print(type(five))
-# print(type(four))
-# print(five)
-# print(four)
+@functools.total_ordering
+class Abs(object):
+    def __init__(self, num):
+        self.num = abs(num)
+
+    def __eq__(self, other):
+        return self.num == abs(other)
+
+    def __lt__(self, other):
+        return self.num < abs(other)
+
+five = (-5)
+four = (-4)
+print(five > four)
+print(type(five))
+print(type(four))
+print(five)
+print(four)
 
 # score = 91
 # if score > 90 and score < 100:
@@ -65,7 +65,7 @@ name = 'Paul'
 #     print('Not debugging')
 
 
-score = 57
+# score = 57
 # if score >= 90:
 #     grade = 'A'
 # else:
@@ -90,11 +90,11 @@ score = 57
 # else:
 #     print(year, ' - не является високосным')
 
-number = 897
-
-if number % 2 == 0:
-    print('остаток =', number % 2)
-    print(number, '- четное число')
-else:
-    print('остаток = ', number % 2)
-    print(number, '- не чётное число')
+# number = 897
+#
+# if number % 2 == 0:
+#     print('остаток =', number % 2)
+#     print(number, '- четное число')
+# else:
+#     print('остаток = ', number % 2)
+#     print(number, '- не чётное число')
