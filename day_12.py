@@ -56,6 +56,7 @@
 # add_numbers('filename.txt')
 
 # https://code.tutsplus.com/ru/tutorials/how-to-read-and-write-csv-files-in-python--cms-29907
+# https://all-python.ru/osnovy/csv.html
 
 # Упражнение 19.9.1
 # Напишите функцию для записи файлов данных, разделенных запятыми (CSV, Comma Separated Values).
