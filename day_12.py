@@ -74,7 +74,9 @@
 import csv
 
 
-values = [('Gerge', '4312 Abbey Road', 22),('John', '54 Love Ave', 21),('Иван', 'Тверская 26', 33)]
+values = [('Gerge', '4312 Abbey Road', 22),
+          ('John', '54 Love Ave', 21),
+          ('Иван', 'Тверская 26', 33)]
 
 sheet = ('names', 'address', 'age')
 
