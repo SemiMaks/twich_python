@@ -1,89 +1,109 @@
-# https://unicode.org/emoji/charts/emoji-list.html
-
-import emoji
-
-print(emoji.emojize('Python is :thumbs_up: '))
-
-print('\U0001F44D')
-print('\U0001F63B')
-
-str_de = 'This is example'
-byte = str_de.encode()
-print(byte)
-str_en = byte.decode()
-print(str_en)
-
-byte_data = b'\xf0\x9f\x8d\x95'
-str_ = byte_data.decode('utf8')
-print(str_)
-
-import locale
-
-print(locale.getpreferredencoding(False))
-
-result_1 = 'x\u00b2'
-result_2 = 'x\N{SUPERSCRIPT TWO}'
-result_1b = result_1.encode('utf8')
-print(result_1)
-print(result_2)
-print(result_1b)
-# print(help(UNICODE))
-result_1bb = result_1.encode('ascii', errors='ignore')
-print(result_1bb)
+# # Юникод
+#
+# import locale
+# print(locale.getpreferredencoding(False))
+#
+# print('\U000000b2')
+# result = 'x\u00b2'
+# print(result)
+# result_2 = 'x\N{SUPERSCRIPT TWO}'
+# print(result_2)
+# result_3 = 'x²'
+# print(result_3)
+# print(result == result_2 == result_3)
+#
+# print(result.encode('utf-8'))
+# print(result.encode('ascii', errors='replace'))
+# # print(help('unicode'))
+#
+# utf8_bytes = b'x\xc2\xb2'
+# text = utf8_bytes.decode('cp949')
+# print(text)
+#
+# with open('sq.utf8', 'w', encoding='cp949') as fout:
+#     fout.write('x²')
+# data = open('sq.utf8', encoding='cp949').read()
+# print(data)
 
 # Упражнение 20.7.1
-# https://www.charset.org/utf-8/13
-# https://ru.wikipedia.org/wiki/ASCII
-# https://home.unicode.org/
+# Посетите сайт http://unicode.org и загрузите таблицу с кодовыми пунктами.
+# Выберите символ, не входящий в набор символов ASCII, и напишите код
+# Python для вывода этого символа как по кодовому пункту, так и по имени.
 
-sym = '\u30c4'
-sym_t = '\N{Katakana Letter Du}'
-sym_g = ''
-
-print(sym)
-print(sym_t)
-
-ascii_symbol = sym.encode('ascii', errors='ignore')
-print(ascii_symbol)
+# sym = '\u30c4'
+# sym_t = '\N{Katakana Letter Du}'
+# print(sym)
+# print(sym_t)
 
 # Упражнение 20.7.2
-# https://ru.wikipedia.org/wiki/%D0%AE%D0%BD%D0%B8%D0%BA%D0%BE%D0%B4
-# https://www.utf8-chartable.de/unicode-utf8-table.pl?names=2&amp;utf8=string-literal
-def utf8_ascii(kod):
-    new = kod[::-1]
-    print(new)
+# Существуют различные символы Юникода, которые выглядят как перевернутые
+# версии ASCII-символов. Найдите таблицу отображения этих символов (это будет
+# несложно). Напишите функцию, которая получает строку ASCII-символов и
+# возвращает перевернутую версию этой строки.
 
-utf8_ascii('\U000000A9')
+# def utf8_ascii(utf8_ascii):
+#     new = utf8_ascii[::-1]
+#     print(utf8_ascii)
+#     print(new)
+#
+#
+# utf8_ascii('x\N{SUPERSCRIPT TWO}')
 
 # Упражнение 20.7.3
-with open('name.txt', 'r') as fin:
-    read = fin.read()
-    reverse_read = read[::-1]
-    print(read)
-    print(reverse_read)
+# Запишите в файл свое имя, записанное перевернутыми символами.
+# Приведите примеры кодировок, которые поддерживали бы такую запись
+# вашего имени. Приведите примеры кодировок, которые такую запись не
+# поддерживают.
+# name = ['\u041C', '\u0410', '\u043A', '\u0441', '\u0438', '\u043C']
+# print(name)
+# new_name = name[::-1]
+# print(new_name)
 
 # Упражнение 20.7.4
-# https://unicode-table.com/ru/sets/quotation-marks/
+# Умные (или закругленные) кавычки не поддерживаются в ASCII.
+# Напишите функцию, которая получает строку ASCII и возвращает строку,
+# в которой двойные кавычки заменяются умными кавычками. Например, строка
+# Python comes with ”batteries included” должна превратиться в Python
+# comes with “batteries included” (если присмотреться повнимательнее,
+# вы увидите, что открывающие кавычки закруглены не так, как закрывающие).
 
-base_string = 'Python comes with "batteries included"'
-ascii_string = base_string.encode('ascii')
-print(ascii_string)
-ascii_str = ascii_string.decode('ascii')
-print(ascii_str)
-
-def ascii_to_utf8(ascii_string):
-    utf8_string = ascii_string.encode('utf8')
-    utf_s = utf8_string.decode('utf8')
-    # replace_base_string = utf_s.replace('"', '\U0000201C')
-    # rep_base_string = rep_base_string.replace('"', '\U0000201D')
-    # print(replace_base_string)
-    # utf8_string = rep_base_string.encode('utf8')
-    # print(utf8_string)
-    # # print(rep_base_string)
-ascii_to_utf8(ascii_string)
+# b = '\U0000275E'
+# a = '\U0000275D'
+# base_string = 'Python comes with "batteries included"'
+# print(base_string)
+# new_b_s = "Python comes with \U0000275Dbatteries included\U0000275E"
+# count = 0
+# for i in range(0, 2):
+#     index = base_string.find('"')
+#     # print(index)
+#     if count == 0:
+#         temp = list(base_string)
+#         temp[index] = a
+#         base_string = "".join(temp)
+#         count += 1
+#     elif count == 1:
+#         temp = list(base_string)
+#         temp[index] = b
+#         base_string = "".join(temp)
+#         count += 1
+# # print(new_b_s)
+# print(base_string)
 
 # Упражнение 20.7.5
-data = [':)', ';)', ':P', ':|']
-def old_emoji(data):
-    for d in data:
+# Напишите функцию, которая получает текст со смайликами в старом
+# стиле (:), :P и т. д.) Используя таблицу эмодзи1, добавьте в свою
+# функцию код для замены текстовых смайликов их Юникод-версиями из таблицы.
+emoji = [':-)', ';-)', ':-P', ':-|']
+new_emoji = ['\U0001F600', '\U0001F609', '\U0001F60B', '\U0001F610']
+# print(emoji)
+# print(new_emoji)
 
+
+def old_to_new(old, new):
+    for i in range(0, 4):
+        emoji[i] = new_emoji[i]
+        # print(emoji)
+    print(emoji)
+
+
+old_to_new(emoji, new_emoji)

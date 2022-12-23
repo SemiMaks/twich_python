@@ -86,7 +86,7 @@ def write_csv(file):
     with open(file, 'wt') as fout:
         writer = csv.writer(fout, delimiter=',', lineterminator='\r')
         writer.writerow(sheet)
-        writer.writerows(values)
+        writer.writerows(values)              # здесь была ошибка, не хватало окончания s
     print('Файл успешно записан')
 
 write_csv('name.csv')
