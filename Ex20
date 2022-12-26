@@ -108,3 +108,180 @@ def old_to_new(old, new):
     print(new_emoji)
 
 # old_to_new(emoji, new_emoji)
+========================================================================
+
+# Классы
+import time
+import random
+
+
+class CorrectChair:
+    """ A Chair on a chairlift """
+    max_occupants = 4
+
+    def __init__(self, id):
+        self.id = id
+        self.count = 0
+
+    def load(self, number):
+        new_val = self._check(self.count + number)
+        self.count = new_val
+
+    def unload(self, number):
+        new_val = self._check(self.count - number)
+        self.count = new_val
+
+    def _check(self, number):
+        if number < 0 or number > self.max_occupants:
+            raise ValueError('invalid count: {}'.format(number))
+        return number
+
+
+NUM_CHAIRS = 100
+
+chairs = []
+for num in range(1, NUM_CHAIRS + 1):
+    chairs.append(CorrectChair(num))
+
+
+def avg(chairs):
+    total = 0
+    for chair in chairs:
+        total += chair.count
+    return total / len(chairs)
+
+
+in_use = []
+transported = 0
+while True:
+    loading = chairs.pop(0)
+    in_use.append(loading)
+    in_use[-1].load(random.randint(0, CorrectChair.max_occupants))
+
+    if len(in_use) > NUM_CHAIRS / 2:
+        unloading = in_use.pop(0)
+        transported += unloading.count
+        unloading.unload(unloading.count)
+        chairs.append(unloading)
+        print(loading.count)
+        print('Loading Chair {} Count:{} Avg{:.2} Total:{}'.format(loading.id, loading.count, avg(in_use), transported))
+        time.sleep(.25)
+-----------------------------------------------------------------
+
+# 1
+class Client:
+    """ Client """
+    account = 0
+    def __init__(self, id):
+        self.id = id
+        self.sum = 0
+
+    def add_money(self, sum):
+        new_sum = self._check(self.account + sum)
+        self.account = new_sum
+
+    def withdraw_money(self, sum):
+        new_sum = self._check(self.account - sum)
+        self.account = new_sum
+
+    def _check(self, account):
+        if account < 0:
+            print(f'На вашем счёте {account} средств.')
+        return account
+
+new_client = Client(0)
+print(new_client.account)
+new_client.add_money(100)
+print(new_client.account)
+new_client.withdraw_money(90)
+print(new_client.account)
+new_client.withdraw_money(20)
+
+------------------------------------------------
+
+# 2
+class Mario:
+    """ Персонаж игры Марио """
+    current_speed = 10
+
+    def __init__(self, name):
+        self.name = name
+
+    def run(self, speed):
+        self.current_speed += speed
+
+    def jump(self, high):
+        self.current_speed -= high
+
+
+pers = Mario('Chip')
+# pers.run(15)
+# pers.jump(5)
+print(pers.name)
+print(pers.current_speed)
+print(pers.jump)
+
+---------------------------------------------------
+
+# 3
+
+class Twitter:
+    """ Twitter социальная сеть """
+    twit = 0
+    twit_count = 0
+
+    def __init__(self, nickname):
+        self.nickname = nickname
+
+    def add_twit(self, note):
+        note = int(note)
+        new_twit = self._check(self.twit + note)
+        self.twit = new_twit
+        self.twit_count += 1
+
+    def del_twit(self, note):
+        note = int(note)
+        new_twit = self._check(self.twit - note)
+        self.twit = new_twit
+        self.twit_count -= 1
+
+    def _check(self, twit_count):
+        if twit_count < 1:
+            print('Опубликованных твитов нет')
+        return twit_count
+
+
+my_twit = Twitter('My nick')
+my_twit.add_twit(1)
+# my_twit.del_twit(1)
+
+print(my_twit.nickname)
+print(my_twit.__dict__)
+
+print(my_twit.twit)
+
+--------------------------------------------------
+
+# 4
+
+class Toster:
+    """ Toster """
+
+    def __init__(self, title):
+        self.title = title
+
+    def materials(self, materials):
+        self.materials = materials
+
+    def mode(self, mode):
+        self.mode = mode
+
+
+tost = Toster('BUD')
+tost.materials('steel')
+tost.mode('heating')
+
+print(tost.__dict__)
+
+
+
