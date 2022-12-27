@@ -1,5 +1,6 @@
 # Субклассирование
 
+<<<<<<< HEAD
 class CorrectChair:
     ''' A Chair on a chairflit'''
     max_ocupants = 4
@@ -157,3 +158,5 @@ princes.jump(3)
 princes.power(2)
 princes.special('Парить')
 princes.display()
+=======
+>>>>>>> 28ddb2921926048758e0320b3ea236e821bc38c1
